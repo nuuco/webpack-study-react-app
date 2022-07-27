@@ -7,41 +7,35 @@
 1. **react, react-dom**
     - react : 리액트 컴포넌트와 Hooks, 라이프 사이클에 대한 정보가 모두 들어있는 기본 리액트 라이브러리
     - react-dom : 리액트 코드를 브라우저에 보여줄 수 있게 하는 라이브러리
-2. **babel**
-    
+2. **babel**   
     JSX 를 브라우저가 읽을 수 있는 js 로 변경해서 번들링해준다. babel은 JSX를 JavaScript로 변경하여 entry에서 불러올 수 있게 만들어줬기 때문에 로더의 일종으로 볼 수 있다.
     
-3. **css-loader**
-    
+3. **css-loader**   
     `import 'style.css';` 와 같이 입력해도 css 가 적용이 된 것도 css-loader 덕분!
     
 <br/>
 
 ### 🧩 리액트 개발에 도움이 되는 라이브러리
 
-1. react-hot-loader → (최신) **react-refresh-webpack-plugin**
-    
-    [react-refresh-webpack-plugin 깃헙](https://github.com/pmmmwh/react-refresh-webpack-plugin)
-    
+1. react-hot-loader → (최신) **react-refresh-webpack-plugin**   
+    [react-refresh-webpack-plugin 깃헙](https://github.com/pmmmwh/react-refresh-webpack-plugin)   
     webpack-dev-server처럼 저장할 때 마다 변경사항을 개발 환경에 적용해주는 라이브러리. 추가적으로 리액트 상태를 유지시켜준다.
     
-2. **eslint**
-    
+2. **eslint**   
     JavaScript로 개발 시 자주 접하는 에러를 방지하기 위한 린터
     
-3. **prettier**
-    
+3. **prettier**    
     JavaScript로 개발 시 통일성 있게 코드 형식을 맞출 수 있게 도와주는 툴. eslint와 조합해서 통일된 코드 형식까지 강요할 수도 있다.
         
 <br/>
 
 ### 🧩 create-react-app 없이 리액트를 웹팩으로 빌드하기
 
-👉 이걸 해보면 npm run start 가 생각보다 되게 어려운 일이었다는 걸 알게 된다.
+👉 이걸 해보면 npm run start 가 생각보다 되게 복잡한 일이었다는 것을 알게 된다.
 
 1. **package.json 만들기**
-    - 우선 다음 명령어로 기본 설정된 package.json 파일을 만들어준다.
-    
+    - 우선 다음 명령어로 기본 설정된 package.json 파일을 만들어준다.   
+       
     ```bash
     $ npm init -y
     ```
@@ -70,9 +64,9 @@
   
 4. **webpack 스크립트 세팅**
     - `npx webpack` 명령어로 웹팩을 실행시킬 수 있다. 이러면 entry 파일에서부터 시작해 번들링한 결과를 output 에 지정한 파일로 만들어 준다.
-    - 다른 개발자와 협업할 때 용이하게 하기 위해 스트립트를 만들어 주는 게 좋다.
+    - 다른 개발자와 협업에 용이하도록 스트립트를 만들어 주는 게 좋다.
     
-    ```jsx
+    ```json
     //package.json
     "scripts": {
     		"build": "webpack", // here
@@ -120,7 +114,7 @@
     - 웹팩 설정 파일을 만들어준다. 번들 파일을 만들기 위해서는 기본적으로 entry, output 두 속성이 필요하다.
         - entry : 번들링 시작 파일 위치
         - output : 번들링 결과물
-    - babel 을 적용시키기 위해 babe-loader 도 적용해준다.
+    - babel 을 적용시키기 위해 babel-loader 도 적용해준다.
         
         ```jsx
         //webpack.config.js
@@ -178,7 +172,7 @@
                
 <br/>    
     
-7. **플러그인(plugin) 사용하기**
+7. **플러그인(plugin) 사용하기**   
     - 플러그인을 사용해서 다양한 작업을 편리하게 할 수 있다.
     - 💻 웹팩은 기본적으로 js 파일하나만 번들 파일로 만들기에 html 문서는 번들 폴더에 따로 생성해줘야했다. 하지만 `html-webpack-plugin` 을 사용하면 html 도 번들 폴더에 자동 생성해준다.
         1. 플러그인 설치
@@ -220,7 +214,8 @@
         - webpack.config.base.js  : 기본 설정 파일
         - webpack.config.dev.js : 개발 모드 설정 파일
         - webpack.config.prod.js : 배포 모드 설정 파일
-        
+           
+             
         ```jsx
         // webpack.config.base.js
         const path = require('path')
@@ -295,8 +290,7 @@
 <br/>
   
 2. **Output 관리 - output 파일명 동적으로 변경**
-    - [fullhash] 또는 [name]/[chunkhash]/[contenthash] 를 파일명으로 주면 output이 동적으로 변한다.
-        
+    - [fullhash] 또는 [name]/[chunkhash]/[contenthash] 를 파일명으로 주면 output이 동적으로 변한다.   
         [웹팩 공식 문서 참고](https://webpack.kr/guides/build-performance/#avoid-production-specific-tooling)
         
     - 예를 들어 이렇게 작성하면
@@ -363,8 +357,8 @@
              
 <br/>          
     
-4. **개발용 서버**
-    1. **webpack-dev-server**
+4. **개발용 서버**   
+    a. **webpack-dev-server**
         - webpack-dev-server 는 라이브 서버와 비슷한 기능을 한다.
             
             ⇒ 데브서버를 키고, (번들 파일이 아닌) 기존 파일을 수정 & 저장하면 페이지에 변경사항이 반영되어있다! (단 번들링 파일이 수정되는 건 아니다… 따로 웹팩 실행시켜야 파일이 바뀐다.)
@@ -401,8 +395,8 @@
               }
             ```
             
-        - localhost:3001 로 접속하면 페이지가 뜬다.
-    2. 🔥 react-hot-loader → (최신) **react-refresh-webpack-plugin**
+        - localhost:3001 로 접속하면 페이지가 뜬다.   
+    b. 🔥 react-hot-loader → (최신) **react-refresh-webpack-plugin**
         - webpack-dev-serve 처럼 수정시 바로 켜져있는 페이지에 적용된다.
         - webpack-dev-server 를 사용하는 상태로 사용
         - 플러그인 설치
