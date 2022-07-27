@@ -66,10 +66,10 @@
     - `npx webpack` 명령어로 웹팩을 실행시킬 수 있다. 이러면 entry 파일에서부터 시작해 번들링한 결과를 output 에 지정한 파일로 만들어 준다.
     - 다른 개발자와 협업에 용이하도록 스트립트를 만들어 주는 게 좋다.
     
-    ```json
+    ```jsx
     //package.json
     "scripts": {
-    		"build": "webpack", // here
+    		"build": "webpack",
         "test": "echo \"Error: no test specified\" && exit 1"
       },
     ```
@@ -172,7 +172,8 @@
                
 <br/>    
     
-7. **플러그인(plugin) 사용하기**   
+7. **플러그인(plugin) 사용하기**      
+
     - 플러그인을 사용해서 다양한 작업을 편리하게 할 수 있다.
     - 💻 웹팩은 기본적으로 js 파일하나만 번들 파일로 만들기에 html 문서는 번들 폴더에 따로 생성해줘야했다. 하지만 `html-webpack-plugin` 을 사용하면 html 도 번들 폴더에 자동 생성해준다.
         1. 플러그인 설치
