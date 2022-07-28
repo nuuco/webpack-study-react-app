@@ -173,54 +173,7 @@
                
 <br/>    
     
-7. **플러그인(plugin) 사용하기**      
-
-    - 플러그인을 사용해서 다양한 작업을 편리하게 할 수 있다.
-    - 💻 웹팩은 기본적으로 js 파일하나만 번들 파일로 만들기에 html 문서는 번들 폴더에 따로 생성해줘야했다. 하지만 `html-webpack-plugin` 을 사용하면 html 도 번들 폴더에 자동 생성해준다.
-        1. 플러그인 설치
-            
-            ```bash
-            $ npm i -D html-webpack-plugin
-            ```
-            
-        2. webpack 설정 파일에 플러그인을 불러오고, plugins 속성에 다음과 같이 추가한다.
-            
-            ```jsx
-            const path = require('path');
-            //설치한 플러그인은 반드시 불러와야한다.
-            const HtmlWebpackPlugin = require('html-webpack-plugin');
-            
-            module.exports = {
-              ...
-              plugins: [new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, "src", "index.html")
-                //번들 폴더에 생성해준 기존 html 문서 위치
-              })]
-            };
-            ```
-            
-        3. 웹팩을 실행하면 번들 폴더에 html 문서가 생기고 자동으로 번들링된 js 문서가 script 태그로 들어가 있다.
-           
-<br/>
-
-8. **추가 설정하기 - target, mode, output.clean 등**
-    - target: ["web", "es5"] :    
-    web 용 es5 문법으로 컴파일(번들링) 하겠다. → ES6를 지원하지 않는 브라우저에서 실행 가능 → **브라우저 호환성** ⬆️
-    - output.clean: true :    
-    새 번들링 시, 기존에 있던 번들 파일을 지운다.
-        ```jsx
-        //./src/script.js
-        require('./style.css');
-        const { agoraStatesDiscussions } = require('./data.js');
-        ...
-        
-        //./src/data.js
-        module.exports.agoraStatesDiscussions = {...};
-        ```
-                 
-<br/>       
-    
-6. **로더(loader) 로 다른 유형 파일 전처리 해주기**
+7. **로더(loader) 로 다른 유형 파일 전처리 해주기**
     - 웹팩은 기본적으로 js 와 JSON 만 이해하기 때문에, 다른 파일을 넣어준 경우 로더(loader) 로 전처리 해줘야한다.
         
         ※ css 파일을 js 파일에 넣어준 경우, 웹팩이 파일을 이해하지 못해 에러 발생
@@ -257,7 +210,7 @@
                 
 <br/>    
         
-7. **플러그인(plugin) 사용하기**
+8. **플러그인(plugin) 사용하기**
     - 플러그인을 사용해서 다양한 작업을 편리하게 할 수 있다.
     - 💻 웹팩은 기본적으로 js 파일하나만 번들 파일로 만들기에 html 문서는 번들 폴더에 따로 생성해줘야했다. 하지만 `html-webpack-plugin` 을 사용하면 html 도 번들 폴더에 자동 생성해준다.
         1. 플러그인 설치
@@ -277,7 +230,7 @@
               ...
               plugins: [new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, "src", "index.html")
-            		//번들 폴더에 생성해준 기존 html 문서 위치
+            	//번들 폴더에 생성해준 기존 html 문서 위치
               })]
             };
             ```
@@ -286,7 +239,7 @@
             
 <br/>    
 
-8. **추가 설정하기 - target, output.clean 등**
+9. **추가 설정하기 - target, output.clean 등**
     - target: ["web", "es5"] :    
     web 용 es5 문법으로 컴파일(번들링) 하겠다. → ES6를 지원하지 않는 브라우저에서 실행 가능 → **브라우저 호환성** ⬆️
     - output.clean: true :    
